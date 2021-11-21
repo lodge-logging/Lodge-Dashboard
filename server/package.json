@@ -1,0 +1,11 @@
+{
+  "name": "lodge-dashboard",
+  "version": "1.0.0",
+  "description": "web application to read from s3 bucket and dump into Elasticsearch ",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
