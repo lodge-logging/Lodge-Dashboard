@@ -1,0 +1,4 @@
+- module: postgres
+  log:
+    enabled: true
+    #var.paths:

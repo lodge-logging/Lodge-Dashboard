@@ -1,0 +1,9 @@
+- module: nginx
+  access:
+    enabled: true
+    #var.paths:
+  error:
+    enabled: true
+    #var.paths:
+  ingress_controller:
+    enabled: false

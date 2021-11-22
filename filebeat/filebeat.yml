@@ -1,0 +1,23 @@
+filebeat.modules:
+{{module}}
+
+setup.kibana:
+  host: "{{kibanaHost}}"
+
+output.kafka:
+  enabled: true
+  hosts: {{kafkaHosts}}
+  topic: "{{topic}}"
+  codec.format:
+    string: "%{[@timestamp]} %{[message]}"
+  partition.round_robin:
+    reachable_only: true
+  required_acks: 1
+
+processors:
+  - add_host_metadata:
+      when.not.contains.tags: forwarded
+  - add_cloud_metadata: ~
+
+logging.level: info
+logging.selectors: ["*"]
