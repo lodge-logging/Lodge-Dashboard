@@ -9,7 +9,7 @@ const s3client = new S3Client({});
 async function listObjectsKeys(bucketName, prefix) {
   let ListCommand = new ListObjectsV2Command({
     Bucket: bucketName,
-    Prefix: prefix,
+    //Prefix: prefix,
   });
   try {
     let response = await s3client.send(ListCommand);
