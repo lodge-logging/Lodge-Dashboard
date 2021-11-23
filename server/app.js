@@ -12,11 +12,11 @@ let options = {
 
 app.get("/s3", async (req, res) => {
   let startDate = { year: 2021, month: 10, day: 22 };
-  let endDate = { year: 2021, month: 10, day: 23 };
+  let endDate = { year: 2021, month: 10, day: 24 };
 
   let objectsList = await s3.listObjectsKeys(
-    options.bucketName,
-    options.prefix
+    options.bucketName
+    // options.prefix
   );
   let filteredObjectKeys = filterBasedOnDate(objectsList, startDate, endDate);
 
@@ -27,8 +27,8 @@ app.get("/s3", async (req, res) => {
     );
     es.pushToES(object);
   }
-
-  // res.send(filteredObjectKeys);
+  // es.pushToES("./log.ndjson");
+  res.send(filteredObjectKeys);
 });
 
 app.listen(PORT, () => {

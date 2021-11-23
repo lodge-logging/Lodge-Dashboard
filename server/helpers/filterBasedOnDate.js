@@ -12,7 +12,8 @@ function filterBasedOnDate(data, from, to) {
     })
     .map((object) => object.Key);
 
-  return objectkeys.splice(1);
+  return objectkeys;
+  //return objectkeys.split(1)
 }
 
 module.exports = { filterBasedOnDate };
