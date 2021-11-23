@@ -2,13 +2,37 @@ const express = require("express");
 const s3 = require("./s3Client");
 const es = require("./esClient");
 const { filterBasedOnDate } = require("./helpers/filterBasedOnDate");
+const { generateConfig } = require("../filebeat/generateConfig");
+const { modules } = require("../filebeat/filebeat-modules");
+const { fileExist, createDir } = require("./helpers/fileOperations");
+const { data } = require("../data.json");
 const app = express();
 const PORT = 3000;
 
 let options = {
-  bucketName: "bandstand-s3",
+  bucketName: data.bucketName,
   prefix: "folder1",
 };
+
+app.get("/filebeat", (req, res) => {
+  let moduleType = "mongo";
+  if (!fileExist(moduleType)) {
+    createDir(moduleType);
+    generateConfig(
+      "../filebeat/filebeat.yml",
+      `./filebeatConfigs/${moduleType}/filebeat.yml`,
+      modules[moduleType],
+      data.kibanaHost,
+      data.kafkaHosts
+    );
+  }
+});
+
+app.get("/download", (req, res) => {
+  let moduleType = "mongo";
+  const file = `./filebeatConfigs/${moduleType}/filebeat.yml`;
+  res.download(file); // Set disposition and send it.
+});
 
 app.get("/s3", async (req, res) => {
   let startDate = { year: 2021, month: 10, day: 22 };
