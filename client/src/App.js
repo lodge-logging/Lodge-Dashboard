@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import S3 from "./components/S3";
 import Home from "./components/Home";
 import IFrame from "./components/IFrame";
+import Shipper from "./components/Shipper";
 
 function App() {
   let kibanaLink =
@@ -19,7 +20,12 @@ function App() {
           />
           <Route
             path="/shipper"
-            element={<Content children={<Home />} title="Shipper" />}
+            element={
+              <Content
+                children={<Shipper shipperName="Filebeat" />}
+                title="Filebeat Shipper"
+              />
+            }
           />
           <Route
             path="/kibana"
