@@ -7,12 +7,16 @@ const { modules } = require("../filebeat/filebeat-modules");
 const { fileExist, createDir } = require("./helpers/fileOperations");
 const { data } = require("../data.json");
 const app = express();
-const PORT = 3000;
+const cors = require("cors");
+const PORT = 5000;
 
 let options = {
   bucketName: data.bucketName,
   prefix: "folder1",
 };
+
+app.use(cors());
+app.use(express.json());
 
 app.get("/filebeat", (req, res) => {
   let moduleType = "mongo";
@@ -34,7 +38,12 @@ app.get("/download", (req, res) => {
   res.download(file); // Set disposition and send it.
 });
 
-app.get("/s3", async (req, res) => {
+app.post("/s3", async (req, res) => {
+  let s = req.body.startDate;
+  let e = req.body.endDate;
+  console.log(s);
+  console.log(e);
+
   let startDate = { year: 2021, month: 10, day: 22 };
   let endDate = { year: 2021, month: 10, day: 24 };
 

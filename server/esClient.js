@@ -4,7 +4,7 @@ const { Client } = require("@elastic/elasticsearch");
 const { data } = require("../data.json");
 
 const client = new Client({
-  node: `${data.esIP}:9200`,
+  node: `http://${data.esIP}:9200`,
 });
 
 async function pushToES(obj) {
