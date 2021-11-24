@@ -9,6 +9,7 @@ const { data } = require("../data.json");
 const app = express();
 const cors = require("cors");
 const PORT = 5000;
+const { formatDate } = require("./helpers/formatDate");
 
 let options = {
   bucketName: data.bucketName,
@@ -39,29 +40,38 @@ app.get("/download", (req, res) => {
 });
 
 app.post("/s3", async (req, res) => {
-  let s = req.body.startDate;
-  let e = req.body.endDate;
-  console.log(s);
-  console.log(e);
+  let { startDate, endDate } = req.body;
 
-  let startDate = { year: 2021, month: 10, day: 22 };
-  let endDate = { year: 2021, month: 10, day: 24 };
-
-  let objectsList = await s3.listObjectsKeys(
-    options.bucketName
-    // options.prefix
-  );
-  let filteredObjectKeys = filterBasedOnDate(objectsList, startDate, endDate);
-
-  for (let index = 0; index < filteredObjectKeys.length; index++) {
-    let object = await s3.getObject(
-      options.bucketName,
-      filteredObjectKeys[index]
+  let [formattedStartDate, formattedEndDate] = formatDate(startDate, endDate);
+  try {
+    let objectsList = await s3.listObjectsKeys(
+      options.bucketName
+      // options.prefix
     );
-    es.pushToES(object);
+    let filteredObjectKeys = filterBasedOnDate(
+      objectsList,
+      formattedStartDate,
+      formattedEndDate
+    );
+
+    for (let index = 0; index < filteredObjectKeys.length; index++) {
+      let object = await s3.getObject(
+        options.bucketName,
+        filteredObjectKeys[index]
+      );
+      es.pushToES(object);
+    }
+    // es.pushToES("./log.ndjson");
+    res.json({
+      message: "Data retrieved successfully!, Check Kibana UI",
+      retrievedFile: filteredObjectKeys,
+    });
+  } catch (err) {
+    console.log(err);
+    console.error(err);
+    res.status(400);
+    res.json({ message: err.message });
   }
-  // es.pushToES("./log.ndjson");
-  res.send(filteredObjectKeys);
 });
 
 app.listen(PORT, () => {
