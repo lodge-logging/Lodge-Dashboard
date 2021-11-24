@@ -6,7 +6,11 @@ function App() {
     <div className="App">
       <Navbar />
       <Content title="S3">
-        <S3 />
+        <iframe
+          src="http://localhost:5601/?auth_provider_hint=anonymous1#/elasticsearch/nodes?embed=true&_g=(....)"
+          height="100%"
+          width="auto"
+        ></iframe>
       </Content>
     </div>
   );
