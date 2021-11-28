@@ -5,10 +5,12 @@ import S3 from "./components/S3";
 import Home from "./components/Home";
 import IFrame from "./components/IFrame";
 import Shipper from "./components/Shipper";
+import { data } from "./data.json";
 
 function App() {
-  let kibanaLink =
-    "http://localhost:5601/?auth_provider_hint=anonymous1#/elasticsearch/nodes?embed=true&_g=(....)";
+  let kibanaLink = `http://${data.kibanaHost}:5601/?auth_provider_hint=anonymous1#/elasticsearch/nodes?embed=true&_g=(....)`;
+  let zooNavigatorLink = "http://localhost:8001/";
+  let kowlLink = "http://localhost:8080/";
   return (
     <div className="App">
       <BrowserRouter>
@@ -33,7 +35,7 @@ function App() {
               <Content
                 children={
                   <Content
-                    children={<IFrame srcLink={kibanaLink} />}
+                    children={<IFrame srcLink={kibanaLink} title="kibana" />}
                     title="Kibana"
                   />
                 }
@@ -46,7 +48,7 @@ function App() {
               <Content
                 children={
                   <Content
-                    children={<IFrame srcLink={kibanaLink} />}
+                    children={<IFrame srcLink={kowlLink} title="Kowl" />}
                     title="kafak-Kowl"
                   />
                 }
@@ -63,7 +65,9 @@ function App() {
               <Content
                 children={
                   <Content
-                    children={<IFrame srcLink={kibanaLink} />}
+                    children={
+                      <IFrame srcLink={zooNavigatorLink} title="zooNavigator" />
+                    }
                     title="zooNavigator"
                   />
                 }

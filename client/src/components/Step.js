@@ -2,8 +2,8 @@ import { useState } from "react";
 
 const Step = ({ number, title, content, color }) => {
   return (
-    <div class="ui raised segment">
-      <div class={`ui ${color} ribbon label`}>Step{number}</div>
+    <div className="ui raised segment">
+      <div className={`ui ${color} ribbon label`}>Step{number}</div>
       <span>{title}</span>
       {content}
     </div>
@@ -40,8 +40,9 @@ export const Step2Content = ({ choices }) => {
           <select
             className="ui dropdown"
             onChange={(e) => setModule(e.target.value)}
+            defaultValue=""
           >
-            <option value="" disabled selected hidden>
+            <option value="" disabled hidden>
               Select a module
             </option>
             {choices.map((choice, index) => {

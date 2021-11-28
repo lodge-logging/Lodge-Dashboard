@@ -1,7 +1,10 @@
-const Message = ({ title, content }) => {
+const Message = ({ title, content, setShowMessage }) => {
+  const handleClick = () => {
+    setShowMessage(false);
+  };
   return (
     <div className="ui info message">
-      <i className="close icon"></i>
+      <i className="close icon" onClick={handleClick}></i>
       <div className="header">{title}</div>
       <p>{content}</p>
     </div>
