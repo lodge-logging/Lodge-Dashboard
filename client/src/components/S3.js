@@ -12,20 +12,18 @@ const S3 = () => {
   const onClickHandler = async (e) => {
     e.preventDefault();
     const dates = { startDate, endDate };
-    console.log("start", startDate);
-    console.log("end", endDate);
     const response = await axios({
       method: "post",
       url: "http://localhost:5000/s3",
       data: dates,
     });
     console.log("response from s3:", response.data);
-    if (true) {
-      setShowMessage(true);
-      setMessage(response.data.message);
-    } else {
-      setShowMessage(false);
-    }
+    // if (true) {
+    //   setShowMessage(true);
+    //   setMessage(response.data.message);
+    // } else {
+    //   setShowMessage(false);
+    // }
   };
 
   return (

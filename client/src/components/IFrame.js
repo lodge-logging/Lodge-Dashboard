@@ -4,7 +4,7 @@ const IFrame = ({ srcLink }) => {
       src={srcLink}
       // height="90vh"
       // width="80%"
-      style={{ minHeight: "90vh", minWidth: "80%" }}
+      style={{ minHeight: "90vh", minWidth: "100%" }}
     ></iframe>
   );
 };
