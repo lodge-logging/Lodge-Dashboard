@@ -34,8 +34,21 @@ app.get("/filebeat", (req, res) => {
 });
 
 app.get("/download", (req, res) => {
-  let moduleType = "mongo";
-  const file = `./filebeatConfigs/${moduleType}/filebeat.yml`;
+  let { module } = req.params;
+  module = module.toLowerCase();
+  console.log(module);
+  if (!fileExist(module)) {
+    createDir(module);
+    generateConfig(
+      "../filebeat/filebeat.yml",
+      `./filebeatConfigs/${module}/filebeat.yml`,
+      modules[module],
+      data.kibanaHost,
+      data.kafkaHosts
+    );
+  }
+  // let moduleType = "mongo";
+  const file = `./filebeatConfigs/${module}/filebeat.yml`;
   res.download(file); // Set disposition and send it.
 });
 
