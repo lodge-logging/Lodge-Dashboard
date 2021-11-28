@@ -8,6 +8,7 @@ const S3 = () => {
   const [endDate, setEndDate] = useState("");
   const [showMessage, setShowMessage] = useState(false);
   const [message, setMessage] = useState("");
+  const [retrievedFileKeys, setRetrievedFileFileKeys] = useState([]);
 
   const onClickHandler = async (e) => {
     e.preventDefault();
@@ -18,16 +19,24 @@ const S3 = () => {
       data: dates,
     });
     console.log("response from s3:", response.data);
-    // if (true) {
-    //   setShowMessage(true);
-    //   setMessage(response.data.message);
-    // } else {
-    //   setShowMessage(false);
-    // }
+    if (response.status === 200) {
+      setShowMessage(true);
+      setMessage(response.data.message);
+      setRetrievedFileFileKeys(response.data.retrievedFile);
+    } else {
+      setShowMessage(false);
+    }
   };
 
   return (
     <>
+      {showMessage ? (
+        <Message
+          title="Success"
+          content={message}
+          setShowMessage={setShowMessage}
+        />
+      ) : null}
       <form className="ui form">
         <div className="field">
           <label>Start Date</label>
@@ -43,7 +52,23 @@ const S3 = () => {
           Retrieve
         </button>
       </form>
-      {showMessage ? <Message title="Success" content={message} /> : null}
+      {retrievedFileKeys.length > 0 ? (
+        <div className="ui middle aligned divided list">
+          {retrievedFileKeys.map((fileKey, index) => {
+            return (
+              <div className="item" key={index}>
+                <div className="right floated content">
+                  <a href={`http://localhost:5000/s3?filekey=${fileKey}`}>
+                    <i className="download icon"></i>
+                  </a>
+                </div>
+                <i className="file alternate icon"></i>
+                <div className="content">{fileKey}</div>
+              </div>
+            );
+          })}
+        </div>
+      ) : null}
     </>
   );
 };

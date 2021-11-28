@@ -40,9 +40,19 @@ app.get("/download", (req, res) => {
       data.kafkaHosts
     );
   }
-  // let moduleType = "mongo";
   const file = `./filebeatConfigs/${module}/filebeat.yml`;
   res.download(file); // Set disposition and send it.
+});
+
+app.get("/s3", async (req, res) => {
+  let { filekey } = req.query;
+  try {
+    res.attachment(filekey);
+    let fileStream = await s3.getObject(options.bucketName, filekey);
+    fileStream.pipe(res);
+  } catch (err) {
+    console.error(err);
+  }
 });
 
 app.post("/s3", async (req, res) => {
