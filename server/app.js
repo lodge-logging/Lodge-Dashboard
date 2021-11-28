@@ -19,23 +19,16 @@ let options = {
 app.use(cors());
 app.use(express.json());
 
-app.get("/filebeat", (req, res) => {
-  let moduleType = "mongo";
-  if (!fileExist(moduleType)) {
-    createDir(moduleType);
-    generateConfig(
-      "../filebeat/filebeat.yml",
-      `./filebeatConfigs/${moduleType}/filebeat.yml`,
-      modules[moduleType],
-      data.kibanaHost,
-      data.kafkaHosts
-    );
-  }
+app.get("/filebeatModules", (req, res) => {
+  let existingModules = Object.keys(modules);
+  res.json({
+    message: `There is ${existingModules.length} modules`,
+    modules: existingModules,
+  });
 });
 
 app.get("/download", (req, res) => {
-  let { module } = req.params;
-  module = module.toLowerCase();
+  let { module } = req.query;
   console.log(module);
   if (!fileExist(module)) {
     createDir(module);

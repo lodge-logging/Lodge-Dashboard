@@ -1,8 +1,17 @@
 import { Step1Content, Step2Content } from "./Step";
 import Step from "./Step";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 const ShipperInstructions = () => {
-  let modules = ["Nginx", "Mongo", "System", "Postgres"];
+  let [modules, setModules] = useState([]);
+  useEffect(() => {
+    async function getModules() {
+      let response = await axios.get("http://localhost:5000/filebeatModules");
+      setModules(response.data.modules);
+    }
+    getModules();
+  }, []);
   return (
     <div className="ui segment">
       <div></div>
