@@ -1,5 +1,4 @@
 import { useState } from "react";
-import axios from "axios";
 
 const Step = ({ number, title, content, color }) => {
   return (
@@ -42,7 +41,9 @@ export const Step2Content = ({ choices }) => {
             className="ui dropdown"
             onChange={(e) => setModule(e.target.value)}
           >
-            <option value="">Module</option>
+            <option value="" disabled selected hidden>
+              Select a module
+            </option>
             {choices.map((choice, index) => {
               return (
                 <option key={index} value={choice}>
@@ -53,7 +54,7 @@ export const Step2Content = ({ choices }) => {
           </select>
         </div>
         <a
-          className="ui button"
+          className={`ui button ${module ? "" : "disabled"}`}
           href={`http://localhost:5000/download?module=${module}`}
         >
           Download
