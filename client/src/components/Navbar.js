@@ -14,7 +14,7 @@ const Navbar = () => {
         <i className="smile icon"></i>
         Kibana
       </Link>
-      <Link to="/kafak-Kowl" className="item" href="/#">
+      <Link to="/kafka-Kowl" className="item" href="/#">
         <i className="calendar icon"></i>
         Kafka Kowl
       </Link>

@@ -43,13 +43,13 @@ function App() {
             }
           />
           <Route
-            path="/kafak-Kowl"
+            path="/kafka-Kowl"
             element={
               <Content
                 children={
                   <Content
                     children={<IFrame srcLink={kowlLink} title="Kowl" />}
-                    title="kafak-Kowl"
+                    title="kafka-Kowl"
                   />
                 }
               />
