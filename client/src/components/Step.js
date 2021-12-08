@@ -1,4 +1,9 @@
 import { useState } from "react";
+import SyntaxHighlighter from "react-syntax-highlighter";
+import { dark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { docco } from "react-syntax-highlighter/dist/esm/styles/hljs";
+
+const filebeatLocationCodeStr = "/etc/filebeat/filebeat.yml";
 
 const Step = ({ number, title, content, color }) => {
   return (
@@ -14,12 +19,9 @@ export const Step1Content = () => {
   return (
     <>
       <p>
-        let step1Content = `Lorem ipsum dolor sit amet, consectetur adipiscing
-        elit. Ut vulputate sed sapien a hendrerit. Praesent congue, est in
-        tincidunt posuere, neque nunc posuere felis, non placerat nunc dolor ut
-        est.
+        If you don't have filebeat already installed, start with installing
         <a href="https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-installation-configuration.html#installation">
-          Install filebeat
+          &nbsp;Filebeat 7.15
         </a>
       </p>
     </>
@@ -32,8 +34,8 @@ export const Step2Content = ({ choices }) => {
   return (
     <>
       <p>
-        let step1Content = `Lorem ipsum dolor sit amet, consectetur adipiscing
-        elit. Ut vulputate sed sapien a hendrerit.
+        Configure Filebeat by selecting a module to support, we are supporting
+        nginx, mongodb, postgres etc..
       </p>
       <form className="ui form">
         <div className="field">
@@ -61,6 +63,34 @@ export const Step2Content = ({ choices }) => {
           Download
         </a>
       </form>
+    </>
+  );
+};
+
+export const Step3Content = () => {
+  return (
+    <>
+      {/* <p>
+        Move your configuration file to <code>/etc/filebeat/filebeat.yml.</code>
+      </p> */}
+
+      <p>Move your configuration file to:</p>
+      <SyntaxHighlighter language="yaml">
+        {filebeatLocationCodeStr}
+      </SyntaxHighlighter>
+    </>
+  );
+};
+
+export const Step4Content = () => {
+  return (
+    <>
+      <p>
+        <a href="https://www.elastic.co/guide/en/beats/filebeat/master/filebeat-starting.html">
+          Start or restart
+        </a>
+        &nbsp;Filebeat.
+      </p>
     </>
   );
 };

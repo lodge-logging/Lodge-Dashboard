@@ -8,7 +8,7 @@ import Shipper from "./components/Shipper";
 import { data } from "./data.json";
 
 function App() {
-  let kibanaLink = `http://${data.kibanaHost}:5601/?auth_provider_hint=anonymous1#/elasticsearch/nodes?embed=true&_g=(....)`;
+  let kibanaLink = `http://${data.kibanaHost}/?auth_provider_hint=anonymous1#/elasticsearch/nodes?embed=true&_g=(....)`;
   let zooNavigatorLink = "http://localhost:8001/";
   let kowlLink = "http://localhost:8080/";
   return (
@@ -56,8 +56,8 @@ function App() {
             }
           />
           <Route
-            path="/Lodge-something"
-            element={<Content children={<S3 />} title="Lodge-something" />}
+            path="/Lodge-Restore"
+            element={<Content children={<S3 />} title="Lodge-Restore" />}
           />
           <Route
             path="/zooNavigator"
@@ -73,6 +73,10 @@ function App() {
                 }
               />
             }
+          />
+          <Route
+            path="/"
+            element={<Content children={<Home />} title="Home" />}
           />
         </Routes>
       </BrowserRouter>
