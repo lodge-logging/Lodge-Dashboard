@@ -1,4 +1,4 @@
-import { Step1Content, Step2Content } from "./Step";
+import { Step1Content, Step2Content, Step3Content, Step4Content } from "./Step";
 import Step from "./Step";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -16,13 +16,8 @@ const ShipperInstructions = () => {
     <div className="ui segment">
       <div></div>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vulputate
-        sed sapien a hendrerit. Praesent congue, est in tincidunt posuere, neque
-        nunc posuere felis, non placerat nunc dolor ut est. Etiam ac faucibus
-        felis. Sed venenatis pharetra nulla, a rutrum sapien luctus non. Donec
-        elementum scelerisque elit. Integer ex mauris, volutpat commodo purus a,
-        tincidunt rutrum sapien. Vivamus sit amet euismod enim, id euismod
-        massa. Nulla ac varius nisi.
+        Filebeat is one of the easiest way to get logs from your system. Lodge
+        supports multiple modules and makes it simple to configure Filebeat.
       </p>
       <Step
         number="1"
@@ -40,8 +35,14 @@ const ShipperInstructions = () => {
         number="3"
         color="yellow"
         title="Move the configuration file to the Filebeat folder"
+        content={<Step3Content />}
       />
-      <Step number="4" color="green" title="Start Filebeat" />
+      <Step
+        number="4"
+        color="green"
+        title="Start Filebeat"
+        content={<Step4Content />}
+      />
     </div>
   );
 };
