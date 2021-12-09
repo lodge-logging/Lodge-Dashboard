@@ -4,7 +4,7 @@ const Content = ({ children, title, description, url }) => {
       <div
         className="ui basic segment"
         // style={{ minHeight: "100vh", marginRight: "20em" }}
-        style={{ marginRight: "10em" }}
+        style={{ marginRight: "30em" }}
       >
         <h3 className="ui header">{title}</h3>
         <p>

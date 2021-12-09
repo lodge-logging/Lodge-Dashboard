@@ -6,9 +6,20 @@ import Home from "./components/Home";
 import IFrame from "./components/IFrame";
 import Shipper from "./components/Shipper";
 import Documenation from "./components/Documentation";
-import data from "./data.json";
+import { useEffect, useState } from "react";
+//import data from "./data.json";
 
 function App() {
+  let [data, setData] = useState({});
+  useEffect(() => {
+    async function fetchData() {
+      let res = await fetch("/data");
+      let data = await res.json();
+      setData(data);
+    }
+    fetchData();
+  }, []);
+
   let kibanaLink = `http://${data.kibanaHost}/?auth_provider_hint=anonymous1#/elasticsearch/nodes?embed=true&_g=(....)`;
   let zooNavigatorLink = `http://${data.hostIP}:8001/`;
   let kowlLink = `http://${data.hostIP}:8080/`;

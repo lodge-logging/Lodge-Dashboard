@@ -4,7 +4,6 @@ import DateInput from "./DateInput";
 import Message from "./Message";
 
 const url = "http://localhost:5000/s3";
-const coloursArr = ["blue", "olive"];
 
 const S3 = () => {
   const [startDate, setStartDate] = useState("");

@@ -29,6 +29,10 @@ app.get("/filebeatModules", (req, res) => {
   });
 });
 
+app.get("/data", (req, res) => {
+  res.json(data);
+});
+
 app.get("/download", (req, res) => {
   let { module } = req.query;
   console.log(module);
