@@ -5,9 +5,10 @@ const { filterBasedOnDate } = require("./helpers/filterBasedOnDate");
 const { generateConfig } = require("../filebeat/generateConfig");
 const { modules } = require("../filebeat/filebeat-modules");
 const { fileExist, createDir } = require("./helpers/fileOperations");
-const data = require("../data.json");
+const data = require("./data.json");
 const app = express();
 const cors = require("cors");
+const path = require("path");
 const PORT = 5000;
 const { formatDate } = require("./helpers/formatDate");
 
@@ -18,6 +19,7 @@ let options = {
 
 app.use(cors());
 app.use(express.json());
+app.use(express.static(path.join(__dirname, "build")));
 
 app.get("/filebeatModules", (req, res) => {
   let existingModules = Object.keys(modules);

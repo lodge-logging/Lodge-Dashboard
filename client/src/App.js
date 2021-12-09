@@ -18,7 +18,6 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Routes>
-          \
           <Route path="/home" element={<Content children={<Home />} />} />
           <Route
             path="/shipper"
@@ -86,10 +85,7 @@ function App() {
               <Content children={<Documenation />} title="Documenation" />
             }
           />
-          <Route
-            path="/"
-            element={<Content children={<Home />} title="Home" />}
-          />
+          <Route path="/" element={<Content children={<Home />} />} />
         </Routes>
       </BrowserRouter>
     </div>
