@@ -23,10 +23,9 @@ const Navbar = () => {
         className={`blue item ${activeItem === "home" ? "active" : ""}`}
         onClick={() => handleClick("home")}
       >
-        {/* <i className="home icon"></i> */}
         <img
           className="ui mini right spaced image"
-          src={process.env.PUBLIC_URL + "/home.png"}
+          src={process.env.PUBLIC_URL + "/images/home.png"}
           alt="white-home-ugly"
         />
         Home
@@ -36,10 +35,9 @@ const Navbar = () => {
         className={`olive item ${activeItem === "shipper" ? "active" : ""}`}
         onClick={() => handleClick("shipper")}
       >
-        {/* <i className="block layout icon"></i> */}
         <img
           className="ui mini right spaced image"
-          src={process.env.PUBLIC_URL + "/Beats.png"}
+          src={process.env.PUBLIC_URL + "/images/beats.png"}
           alt="lodge-filebeat"
         />
         Shippers
@@ -49,10 +47,9 @@ const Navbar = () => {
         className={`blue item ${activeItem === "kafka-Kowl" ? "active" : ""}`}
         onClick={() => handleClick("kafka-Kowl")}
       >
-        {/* <i className="calendar icon"></i> */}
         <img
           className="ui mini right spaced image"
-          src={process.env.PUBLIC_URL + "/kowl.png"}
+          src={process.env.PUBLIC_URL + "/images/kowl.png"}
           alt="kafka-kowl"
         />
         Kafka Kowl
@@ -64,10 +61,9 @@ const Navbar = () => {
         }`}
         onClick={() => handleClick("zooNavigator")}
       >
-        {/* <i className="calendar icon"></i> */}
         <img
           className="ui mini right spaced image"
-          src={process.env.PUBLIC_URL + "/zoonav.png"}
+          src={process.env.PUBLIC_URL + "/images/zoonav.png"}
           alt="zoonavigator"
         />
         ZooNavigator
@@ -79,10 +75,9 @@ const Navbar = () => {
         }`}
         onClick={() => handleClick("lodge-Restore")}
       >
-        {/* <i className="calendar icon"></i> */}
         <img
           className="ui mini right spaced image"
-          src={process.env.PUBLIC_URL + "/lodge-restore.png"}
+          src={process.env.PUBLIC_URL + "/images/lodge-restore.png"}
           alt="lodge-restore"
         />
         Lodge-Restore
@@ -94,10 +89,9 @@ const Navbar = () => {
       >
         <img
           className="ui mini right spaced image"
-          src={process.env.PUBLIC_URL + "/Kibana.png"}
+          src={process.env.PUBLIC_URL + "/images/kibana.png"}
           alt="lodge-kibana"
         />
-        {/* <i className=" icon"></i> */}
         Kibana
       </Link>
       <Link
@@ -109,13 +103,11 @@ const Navbar = () => {
       >
         <img
           className="ui mini right spaced image"
-          src={process.env.PUBLIC_URL + "/docs-removebg.png"}
+          src={process.env.PUBLIC_URL + "/images/docs.png"}
           alt="lodge-documentation"
         />
-        {/* <i className=" icon"></i> */}
         Documentation
       </Link>
-      {/* do we want to copy tapestry and add another tab for docs ? */}
     </div>
   );
 };

@@ -3,8 +3,8 @@ const IFrame = ({ srcLink, title }) => {
     <iframe
       src={srcLink}
       title={title}
-      // height="90vh"
-      // width="80%"
+      //height="90vh"
+      //width="80%"
       style={{ minHeight: "90vh", minWidth: "100%" }}
     ></iframe>
   );

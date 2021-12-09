@@ -7,18 +7,13 @@ const ShipperInstructions = () => {
   let [modules, setModules] = useState([]);
   useEffect(() => {
     async function getModules() {
-      let response = await axios.get("http://localhost:5000/filebeatModules");
+      let response = await axios.get("/filebeatModules");
       setModules(response.data.modules);
     }
     getModules();
   }, []);
   return (
-    <div className="ui basic segment">
-      <div></div>
-      {/* <p>
-        Filebeat is one of the easiest way to get logs from your system. Lodge
-        supports multiple modules and makes it simple to configure Filebeat.
-      </p> */}
+    <>
       <p>
         Lodge uses Filebeat to collect and ship logs. Please follow the
         instructions below to begin shipping logs to Lodge.
@@ -47,7 +42,7 @@ const ShipperInstructions = () => {
         title="Start Filebeat"
         content={<Step4Content />}
       />
-    </div>
+    </>
   );
 };
 

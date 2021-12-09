@@ -3,8 +3,6 @@ import axios from "axios";
 import DateInput from "./DateInput";
 import Message from "./Message";
 
-const url = "http://localhost:5000/s3";
-
 const S3 = () => {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
@@ -17,10 +15,9 @@ const S3 = () => {
     const dates = { startDate, endDate };
     const response = await axios({
       method: "post",
-      url: url,
+      url: "/s3",
       data: dates,
     });
-    console.log("response from s3:", response.data);
     if (response.status === 200) {
       setShowMessage(true);
       setMessage(response.data.message);
@@ -32,7 +29,10 @@ const S3 = () => {
 
   return (
     <>
-      <div className="ui basic segment">
+      <div
+        className="ui basic segment"
+        style={{ minHeight: "90vh", minWidth: "100%" }}
+      >
         <p>
           <i>
             Lodge-Restore allows you to retrieve archival log data from S3 based
@@ -80,7 +80,7 @@ const S3 = () => {
                 return (
                   <div className="item" key={index}>
                     <div className="right floated content">
-                      <a href={`${url}?filekey=${fileKey}`}>
+                      <a href={`/s3?filekey=${fileKey}`}>
                         <i className="download icon"></i>
                       </a>
                     </div>

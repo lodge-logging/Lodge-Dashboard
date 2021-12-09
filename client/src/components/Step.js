@@ -2,6 +2,8 @@ import { useState } from "react";
 import SyntaxHighlighter from "react-syntax-highlighter";
 
 const filebeatLocationCodeStr = "/etc/filebeat/filebeat.yml";
+const filebeatInstallURL =
+  "https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-installation-configuration.html#installation";
 
 const Step = ({ number, title, content, color }) => {
   return (
@@ -20,7 +22,7 @@ export const Step1Content = () => {
     <>
       <p>
         If you don't have filebeat already installed, start with installing
-        <a href="https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-installation-configuration.html#installation">
+        <a href={filebeatInstallURL} target="_blank" rel="noreferrer">
           &nbsp;Filebeat 7.15
         </a>
       </p>
@@ -65,7 +67,7 @@ export const Step2Content = ({ choices }) => {
         </div>
         <a
           className={`ui button ${module ? "" : "disabled"}`}
-          href={`http://localhost:5000/download?module=${module}`}
+          href={`/download?module=${module}`}
         >
           Download
         </a>
@@ -95,7 +97,11 @@ export const Step4Content = () => {
       <p>
         <i>
           Check the &nbsp;
-          <a href="https://www.elastic.co/guide/en/beats/filebeat/master/filebeat-starting.html">
+          <a
+            href="https://www.elastic.co/guide/en/beats/filebeat/master/filebeat-starting.html"
+            target="_blank"
+            rel="noreferrer"
+          >
             Filebeat documentation
           </a>
           &nbsp;for the specific command to start Filebeat based on your

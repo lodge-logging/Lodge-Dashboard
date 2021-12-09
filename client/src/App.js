@@ -7,7 +7,6 @@ import IFrame from "./components/IFrame";
 import Shipper from "./components/Shipper";
 import Documenation from "./components/Documentation";
 import { useEffect, useState } from "react";
-//import data from "./data.json";
 
 function App() {
   let [data, setData] = useState({});
@@ -33,10 +32,7 @@ function App() {
           <Route
             path="/shipper"
             element={
-              <Content
-                children={<Shipper shipperName="Filebeat" />}
-                title="Filebeat as a Shipper"
-              />
+              <Content children={<Shipper />} title="Filebeat as a Shipper" />
             }
           />
           <Route

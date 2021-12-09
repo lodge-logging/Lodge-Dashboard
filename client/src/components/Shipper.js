@@ -1,10 +1,13 @@
 import ShipperInstructions from "./ShipperInstructions";
 
-const Shipper = ({ shipperName }) => {
+const Shipper = () => {
   return (
-    <>
+    <div
+      className="ui basic segment"
+      style={{ minHeight: "90vh", minWidth: "100%" }}
+    >
       <ShipperInstructions />
-    </>
+    </div>
   );
 };
 

@@ -8,16 +8,20 @@ output.kafka:
   enabled: true
   hosts: {{kafkaHosts}}
   topic: "{{topic}}"
-  codec.format:
-    string: "%{[@timestamp]} %{[message]}"
+  #codec.format:
+  # string: "%{[@timestamp]} %{[message]}"
   partition.round_robin:
     reachable_only: true
   required_acks: 1
+  compression: gzip
+  max_message_bytes: 1000000
+  auto_offset_reset: earliest
 
 processors:
   - add_host_metadata:
       when.not.contains.tags: forwarded
   - add_cloud_metadata: ~
+  - add_id: ~
 
 logging.level: info
 logging.selectors: ["*"]

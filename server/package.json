@@ -4,7 +4,7 @@
   "description": "web application to read from s3 bucket and dump into Elasticsearch ",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js"
   },
   "author": "",
   "license": "ISC",
