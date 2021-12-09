@@ -5,7 +5,7 @@ const { filterBasedOnDate } = require("./helpers/filterBasedOnDate");
 const { generateConfig } = require("../filebeat/generateConfig");
 const { modules } = require("../filebeat/filebeat-modules");
 const { fileExist, createDir } = require("./helpers/fileOperations");
-const { data } = require("../data.json");
+const data = require("../data.json");
 const app = express();
 const cors = require("cors");
 const PORT = 5000;
@@ -79,7 +79,7 @@ app.post("/s3", async (req, res) => {
     }
     // es.pushToES("./log.ndjson");
     res.json({
-      message: "Data retrieved successfully!, Check Kibana UI",
+      message: "Data retrieved successfully! Check Kibana UI.",
       retrievedFile: filteredObjectKeys,
     });
   } catch (err) {

@@ -3,6 +3,9 @@ import axios from "axios";
 import DateInput from "./DateInput";
 import Message from "./Message";
 
+const url = "http://localhost:5000/s3";
+const coloursArr = ["blue", "olive"];
+
 const S3 = () => {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
@@ -15,7 +18,7 @@ const S3 = () => {
     const dates = { startDate, endDate };
     const response = await axios({
       method: "post",
-      url: "http://localhost:5000/s3",
+      url: url,
       data: dates,
     });
     console.log("response from s3:", response.data);
@@ -30,45 +33,67 @@ const S3 = () => {
 
   return (
     <>
-      {showMessage ? (
-        <Message
-          title="Success"
-          content={message}
-          setShowMessage={setShowMessage}
-        />
-      ) : null}
-      <form className="ui form">
-        <div className="field">
-          <label>Start Date</label>
+      <div className="ui basic segment">
+        <p>
+          <i>
+            Lodge-Restore allows you to retrieve archival log data from S3 based
+            on a specific date range and reindex it back into Elasticsearch to
+            be visualized in Kibana.
+          </i>
+        </p>
+
+        {showMessage ? (
+          <Message
+            title="Success"
+            content={message}
+            setShowMessage={setShowMessage}
+          />
+        ) : null}
+
+        <form className="ui form">
           <div className="field">
-            <DateInput setDate={setStartDate} />
+            <label>Start Date</label>
+            <div className="field">
+              <DateInput setDate={setStartDate} />
+            </div>
+            <label>End Date</label>
+            <div className="field">
+              <DateInput setDate={setEndDate} />
+            </div>
           </div>
-          <label>End Date</label>
-          <div className="field">
-            <DateInput setDate={setEndDate} />
-          </div>
-        </div>
-        <button className="ui button" type="submit" onClick={onClickHandler}>
-          Retrieve
-        </button>
-      </form>
-      {retrievedFileKeys.length > 0 ? (
-        <div className="ui middle aligned divided list">
-          {retrievedFileKeys.map((fileKey, index) => {
-            return (
-              <div className="item" key={index}>
-                <div className="right floated content">
-                  <a href={`http://localhost:5000/s3?filekey=${fileKey}`}>
-                    <i className="download icon"></i>
-                  </a>
+          <button
+            className="ui button teal"
+            type="submit"
+            onClick={onClickHandler}
+          >
+            Retrieve
+          </button>
+        </form>
+        {retrievedFileKeys.length > 0 ? (
+          <div className="ui segment">
+            <div className="ui middle aligned divided list">
+              <div className="item">
+                <div>
+                  <strong>Log Files</strong>
                 </div>
-                <i className="file alternate icon"></i>
-                <div className="content">{fileKey}</div>
               </div>
-            );
-          })}
-        </div>
-      ) : null}
+              {retrievedFileKeys.map((fileKey, index) => {
+                return (
+                  <div className="item" key={index}>
+                    <div className="right floated content">
+                      <a href={`${url}?filekey=${fileKey}`}>
+                        <i className="download icon"></i>
+                      </a>
+                    </div>
+                    <i className="file alternate icon"></i>
+                    <div className="content">{fileKey}</div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        ) : null}
+      </div>
     </>
   );
 };

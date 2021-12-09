@@ -13,11 +13,15 @@ const ShipperInstructions = () => {
     getModules();
   }, []);
   return (
-    <div className="ui segment">
+    <div className="ui basic segment">
       <div></div>
-      <p>
+      {/* <p>
         Filebeat is one of the easiest way to get logs from your system. Lodge
         supports multiple modules and makes it simple to configure Filebeat.
+      </p> */}
+      <p>
+        Lodge uses Filebeat to collect and ship logs. Please follow the
+        instructions below to begin shipping logs to Lodge.
       </p>
       <Step
         number="1"
@@ -28,13 +32,13 @@ const ShipperInstructions = () => {
       <Step
         number="2"
         color="blue"
-        title="Pick a Module and Download yml file"
+        title="Select a Module and Download the yaml file"
         content={<Step2Content choices={modules} />}
       />
       <Step
         number="3"
         color="yellow"
-        title="Move the configuration file to the Filebeat folder"
+        title="Move the configuration file downloaded to the Filebeat folder"
         content={<Step3Content />}
       />
       <Step

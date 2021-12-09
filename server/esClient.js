@@ -1,7 +1,7 @@
 const split = require("split2");
 const { createReadStream } = require("fs");
 const { Client } = require("@elastic/elasticsearch");
-const { data } = require("../data.json");
+const data = require("../data.json");
 
 const client = new Client({
   node: `http://${data.esIP}:9200`,

@@ -1,30 +1,39 @@
 const Home = () => {
   return (
     <>
-      <div class="ui floating message">
-        <p>Welcome to the Lodge Dashboard!</p>
+      <div className="ui fluid center aligned container">
+        <div class="ui hidden divider"></div>
+        <div class="ui hidden divider"></div>
+        <div class="ui hidden divider"></div>
+        <div class="ui hidden divider"></div>
+        <div class="ui hidden divider"></div>
+        <div class="ui basic segment">
+          <img
+            className="ui medium spaced image"
+            src={process.env.PUBLIC_URL + "/4verbs-bold-removebg.png"}
+            alt="lodge-elk-high-level"
+          />
+          <img
+            className="ui large spaced image"
+            src={process.env.PUBLIC_URL + "/4-verbs-diagram-dashboard.png"}
+            alt="lodge-elk-high-level"
+          />
+        </div>
       </div>
-      <div className="ui vertical segment">
-        <img
-          className="ui centered medium image"
-          src={process.env.PUBLIC_URL + "/lodge_logo_color.png"}
-          alt="Lodge Logo"
-        />
-      </div>
-      <div className="ui vertical olive segment">
-        <p>
-          Te eum doming eirmod, nominati pertinacia argumentum ad his. Ex eam
-          alia facete scriptorem, est autem aliquip detraxit at. Usu ocurreret
-          referrentur at, cu epicurei appellantur vix. Cum ea laoreet recteque
-          electram, eos choro alterum definiebas in. Vim dolorum definiebas an.
-          Mei ex natum rebum iisque.
-        </p>
-        <p>
-          Audiam quaerendum eu sea, pro omittam definiebas ex. Te est latine
-          definitiones. Quot wisi nulla ex duo. Vis sint solet expetenda ne, his
-          te phaedrum referrentur consectetuer. Id vix fabulas oporteat, ei quo
-          vide phaedrum, vim vivendum maiestatis in
-        </p>
+      <div class="ui hidden divider"></div>
+      <div class="ui hidden divider"></div>
+      <div class="ui hidden divider"></div>
+      <div class="ui hidden divider"></div>
+      <div class="ui hidden divider"></div>
+      <div class="ui hidden divider"></div>
+      <div class="ui hidden divider"></div>
+      <div class="ui hidden divider"></div>
+      <div className="ui fluid center aligned container">
+        <h4>
+          Welcome to Lodge - your end-to-end log data pipeline. Check out our
+          documentation to get started.
+        </h4>
+        <button className="ui teal button">Lodge Documentation</button>
       </div>
     </>
   );

@@ -5,27 +5,27 @@ import S3 from "./components/S3";
 import Home from "./components/Home";
 import IFrame from "./components/IFrame";
 import Shipper from "./components/Shipper";
-import { data } from "./data.json";
+import Documenation from "./components/Documentation";
+import data from "./data.json";
 
 function App() {
   let kibanaLink = `http://${data.kibanaHost}/?auth_provider_hint=anonymous1#/elasticsearch/nodes?embed=true&_g=(....)`;
-  let zooNavigatorLink = "http://localhost:8001/";
-  let kowlLink = "http://localhost:8080/";
+  let zooNavigatorLink = `http://${data.hostIP}:8001/`;
+  let kowlLink = `http://${data.hostIP}:8080/`;
+
   return (
     <div className="App">
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route
-            path="/home"
-            element={<Content children={<Home />} title="Home" />}
-          />
+          \
+          <Route path="/home" element={<Content children={<Home />} />} />
           <Route
             path="/shipper"
             element={
               <Content
                 children={<Shipper shipperName="Filebeat" />}
-                title="Filebeat Shipper"
+                title="Filebeat as a Shipper"
               />
             }
           />
@@ -37,6 +37,8 @@ function App() {
                   <Content
                     children={<IFrame srcLink={kibanaLink} title="kibana" />}
                     title="Kibana"
+                    description="Kibana allows you to search, analyze, and visualize log data in real time."
+                    url={`http://${data.kibanaHost}`}
                   />
                 }
               />
@@ -50,6 +52,8 @@ function App() {
                   <Content
                     children={<IFrame srcLink={kowlLink} title="Kowl" />}
                     title="kafka-Kowl"
+                    description="Kafka Kowl allows you to do data exploration, consumer lag monitoring and provide Kafka topic insights."
+                    url={kowlLink}
                   />
                 }
               />
@@ -69,9 +73,17 @@ function App() {
                       <IFrame srcLink={zooNavigatorLink} title="zooNavigator" />
                     }
                     title="zooNavigator"
+                    description="ZooNavigator provides you an effcient way to manage ZooKeeper nodes."
+                    url={zooNavigatorLink}
                   />
                 }
               />
+            }
+          />
+          <Route
+            path="/documentation"
+            element={
+              <Content children={<Documenation />} title="Documenation" />
             }
           />
           <Route

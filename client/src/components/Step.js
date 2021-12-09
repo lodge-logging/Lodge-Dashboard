@@ -9,7 +9,9 @@ const Step = ({ number, title, content, color }) => {
   return (
     <div className="ui raised segment">
       <div className={`ui ${color} ribbon label`}>Step{number}</div>
-      <span>{title}</span>
+      <span>
+        <strong>{title}</strong>
+      </span>
       {content}
     </div>
   );
@@ -34,8 +36,15 @@ export const Step2Content = ({ choices }) => {
   return (
     <>
       <p>
-        Configure Filebeat by selecting a module to support, we are supporting
-        nginx, mongodb, postgres etc..
+        Configure Filebeat by selecting a module to download, we currently
+        support Nginx, MongoDB, PostgreSQL, etc..
+      </p>
+      <p>
+        <i>
+          Note: If your logtype is not available, you will need to manually
+          configure Filebeat as well as add the appropriate grok pattern to
+          Logstash.
+        </i>
       </p>
       <form className="ui form">
         <div className="field">
@@ -74,7 +83,6 @@ export const Step3Content = () => {
         Move your configuration file to <code>/etc/filebeat/filebeat.yml.</code>
       </p> */}
 
-      <p>Move your configuration file to:</p>
       <SyntaxHighlighter language="yaml">
         {filebeatLocationCodeStr}
       </SyntaxHighlighter>
@@ -85,11 +93,16 @@ export const Step3Content = () => {
 export const Step4Content = () => {
   return (
     <>
+      <p>Start or restart Filebeat.</p>
       <p>
-        <a href="https://www.elastic.co/guide/en/beats/filebeat/master/filebeat-starting.html">
-          Start or restart
-        </a>
-        &nbsp;Filebeat.
+        <i>
+          Check the &nbsp;
+          <a href="https://www.elastic.co/guide/en/beats/filebeat/master/filebeat-starting.html">
+            Filebeat documentation
+          </a>
+          &nbsp;for the specific command to start Filebeat based on your
+          operating system.
+        </i>
       </p>
     </>
   );

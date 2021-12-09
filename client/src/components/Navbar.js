@@ -7,6 +7,7 @@ const Navbar = () => {
     setActiveItem(itemName);
     console.log(itemName);
   };
+
   return (
     <div className="ui inverted visible left vertical sidebar menu">
       <div className="item">
@@ -25,7 +26,7 @@ const Navbar = () => {
         {/* <i className="home icon"></i> */}
         <img
           className="ui mini right spaced image"
-          src={process.env.PUBLIC_URL + "/white-home-ugly.png"}
+          src={process.env.PUBLIC_URL + "/home.png"}
           alt="white-home-ugly"
         />
         Home
@@ -38,7 +39,7 @@ const Navbar = () => {
         {/* <i className="block layout icon"></i> */}
         <img
           className="ui mini right spaced image"
-          src={process.env.PUBLIC_URL + "/beats.png"}
+          src={process.env.PUBLIC_URL + "/Beats.png"}
           alt="lodge-filebeat"
         />
         Shippers
@@ -66,7 +67,7 @@ const Navbar = () => {
         {/* <i className="calendar icon"></i> */}
         <img
           className="ui mini right spaced image"
-          src={process.env.PUBLIC_URL + "/zoonavigator.png"}
+          src={process.env.PUBLIC_URL + "/zoonav.png"}
           alt="zoonavigator"
         />
         ZooNavigator
@@ -81,7 +82,7 @@ const Navbar = () => {
         {/* <i className="calendar icon"></i> */}
         <img
           className="ui mini right spaced image"
-          src={process.env.PUBLIC_URL + "/lodge-restore-wr.png"}
+          src={process.env.PUBLIC_URL + "/lodge-restore.png"}
           alt="lodge-restore"
         />
         Lodge-Restore
@@ -93,15 +94,27 @@ const Navbar = () => {
       >
         <img
           className="ui mini right spaced image"
-          src={
-            process.env.PUBLIC_URL + "/elastic-kibana-logo-png-transparent.png"
-          }
+          src={process.env.PUBLIC_URL + "/Kibana.png"}
           alt="lodge-kibana"
         />
         {/* <i className=" icon"></i> */}
         Kibana
       </Link>
-
+      <Link
+        to="/documentation"
+        className={`olive item ${
+          activeItem === "documentation" ? "active" : ""
+        }`}
+        onClick={() => handleClick("documentation")}
+      >
+        <img
+          className="ui mini right spaced image"
+          src={process.env.PUBLIC_URL + "/docs-removebg.png"}
+          alt="lodge-documentation"
+        />
+        {/* <i className=" icon"></i> */}
+        Documentation
+      </Link>
       {/* do we want to copy tapestry and add another tab for docs ? */}
     </div>
   );
