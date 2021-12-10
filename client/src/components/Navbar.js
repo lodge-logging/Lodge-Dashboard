@@ -72,6 +72,8 @@ const Navbar = ({ data }) => {
         className={`olive item ${
           activeItem === "zooNavigator" ? "active" : ""
         }`}
+        target="_blank"
+        rel="noreferrer"
         onClick={() => handleClick("zooNavigator")}
       >
         <img

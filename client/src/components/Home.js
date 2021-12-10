@@ -29,10 +29,10 @@ const Home = () => {
       <div class="ui hidden divider"></div>
       <div class="ui hidden divider"></div>
       <div className="ui fluid center aligned container">
-        <h4>
+        <h3>
           Welcome to Lodge - your end-to-end log data pipeline. Check out our
           documentation to get started.
-        </h4>
+        </h3>
         <button className="ui teal button">Lodge Documentation</button>
       </div>
     </>

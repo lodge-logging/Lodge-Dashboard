@@ -9,7 +9,7 @@ const data = require("./data.json");
 const app = express();
 const cors = require("cors");
 const path = require("path");
-const PORT = 5000;
+const PORT = 3000;
 const { formatDate } = require("./helpers/formatDate");
 
 let options = {
