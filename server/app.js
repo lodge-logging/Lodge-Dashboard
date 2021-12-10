@@ -83,7 +83,6 @@ app.post("/s3", async (req, res) => {
       );
       es.pushToES(object);
     }
-    // es.pushToES("./log.ndjson");
     res.json({
       message: "Data retrieved successfully! Check Kibana UI.",
       retrievedFile: filteredObjectKeys,
@@ -92,7 +91,11 @@ app.post("/s3", async (req, res) => {
     console.log(err);
     console.error(err);
     res.status(400);
-    res.json({ message: err.message });
+    res.json({
+      message: err.message,
+      data: objectsList,
+      bucketName: options.bucketName,
+    });
   }
 });
 

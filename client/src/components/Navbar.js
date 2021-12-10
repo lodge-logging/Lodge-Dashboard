@@ -1,11 +1,10 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-const Navbar = () => {
+const Navbar = ({ data }) => {
   const [activeItem, setActiveItem] = useState("");
   const handleClick = (itemName) => {
     setActiveItem(itemName);
-    console.log(itemName);
   };
 
   return (
@@ -54,7 +53,7 @@ const Navbar = () => {
         />
         Kafka Kowl
       </Link>
-      <Link
+      {/* <Link
         to="/zooNavigator"
         className={`olive item ${
           activeItem === "zooNavigator" ? "active" : ""
@@ -67,7 +66,21 @@ const Navbar = () => {
           alt="zoonavigator"
         />
         ZooNavigator
-      </Link>
+      </Link> */}
+      <a
+        href={`http://${data.hostIP}:8001/`}
+        className={`olive item ${
+          activeItem === "zooNavigator" ? "active" : ""
+        }`}
+        onClick={() => handleClick("zooNavigator")}
+      >
+        <img
+          className="ui mini right spaced image"
+          src={process.env.PUBLIC_URL + "/images/zoonav.png"}
+          alt="zoonavigator"
+        />
+        ZooNavigator
+      </a>
       <Link
         to="/Lodge-Restore"
         className={`blue item ${

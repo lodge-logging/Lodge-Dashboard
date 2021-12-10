@@ -26,7 +26,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Navbar />
+        <Navbar data={data} />
         <Routes>
           <Route path="/home" element={<Content children={<Home />} />} />
           <Route
