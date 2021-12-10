@@ -3,8 +3,9 @@ const {
   S3Client,
   ListObjectsV2Command,
 } = require("@aws-sdk/client-s3");
+const data = require("./data.json");
 
-const s3client = new S3Client({});
+const s3client = new S3Client({ region: data.region });
 
 async function listObjectsKeys(bucketName, prefix) {
   let ListCommand = new ListObjectsV2Command({
