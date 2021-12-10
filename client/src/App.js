@@ -19,7 +19,7 @@ function App() {
     fetchData();
   }, []);
 
-  let kibanaLink = `http://${data.kibanaHost}/?auth_provider_hint=anonymous1#/elasticsearch/nodes?embed=true&_g=(....)`;
+  let kibanaLink = `http://${data.kibanaHost}/?auth_provider_hint=anonymous1#/elasticsearch/nodes?_g=(....)`;
   //let zooNavigatorLink = `http://${data.hostIP}:8001/`;
   let kowlLink = `http://${data.hostIP}:8080/`;
 
