@@ -81,7 +81,7 @@ app.post("/s3", async (req, res) => {
         options.bucketName,
         filteredObjectKeys[index]
       );
-      es.pushToES(object);
+      es.pushToES(object, filteredObjectKeys[index]);
     }
     res.json({
       message: "Data retrieved successfully! Check Kibana UI.",
