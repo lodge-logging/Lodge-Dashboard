@@ -8,7 +8,8 @@ const client = new Client({
 });
 
 async function pushToES(obj, objectKey) {
-  let date = objectKey.split(".")[3];
+  console.log("data", data);
+  let date = objectKey.split(".")[4];
   const result = await client.helpers.bulk({
     datasource: obj.pipe(split(JSON.parse)),
     // datasource: [obj],

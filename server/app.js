@@ -73,7 +73,7 @@ app.post("/s3", async (req, res) => {
 
     if (objectsList.length === 0) {
       res.json({
-        message: "There are no logs from this time period",
+        message: "There are no logs in S3 yet, Try again later",
         retrievedFile: [],
       });
     } else {
@@ -83,17 +83,24 @@ app.post("/s3", async (req, res) => {
         formattedEndDate
       );
 
-      for (let index = 0; index < filteredObjectKeys.length; index++) {
-        let object = await s3.getObject(
-          options.bucketName,
-          filteredObjectKeys[index]
-        );
-        es.pushToES(object, filteredObjectKeys[index]);
+      if (filteredObjectKeys.length === 0) {
+        res.json({
+          message: "There are no logs from this time period",
+          retrievedFile: [],
+        });
+      } else {
+        for (let index = 0; index < filteredObjectKeys.length; index++) {
+          let object = await s3.getObject(
+            options.bucketName,
+            filteredObjectKeys[index]
+          );
+          es.pushToES(object, filteredObjectKeys[index]);
+        }
+        res.json({
+          message: "Data retrieved successfully! Check Kibana UI.",
+          retrievedFile: filteredObjectKeys,
+        });
       }
-      res.json({
-        message: "Data retrieved successfully! Check Kibana UI.",
-        retrievedFile: filteredObjectKeys,
-      });
     }
   } catch (err) {
     console.log(err);
