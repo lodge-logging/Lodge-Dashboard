@@ -7,10 +7,10 @@ const client = new Client({
   nodes: data.esIPs,
 });
 
-async function pushToES(obj, objectKey) {
-  console.log("data", data);
-  let date = objectKey.split(".")[4];
-  const result = await client.helpers.bulk({
+function pushToES(obj, objectKey) {
+  let date = objectKey.split(".")[3];
+  date = date.split("T")[0].replaceAll("-", ".");
+  client.helpers.bulk({
     datasource: obj.pipe(split(JSON.parse)),
     // datasource: [obj],
     //datasource: createReadStream(obj).pipe(split(JSON.parse)),
@@ -18,7 +18,6 @@ async function pushToES(obj, objectKey) {
       return { index: { _index: `restored-${date}` } };
     },
   });
-  console.log(result);
 }
 
 module.exports = { pushToES };
