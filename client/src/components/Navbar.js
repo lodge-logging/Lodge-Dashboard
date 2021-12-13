@@ -53,20 +53,6 @@ const Navbar = ({ data }) => {
         />
         Kafka Kowl
       </Link>
-      {/* <Link
-        to="/zooNavigator"
-        className={`olive item ${
-          activeItem === "zooNavigator" ? "active" : ""
-        }`}
-        onClick={() => handleClick("zooNavigator")}
-      >
-        <img
-          className="ui mini right spaced image"
-          src={process.env.PUBLIC_URL + "/images/zoonav.png"}
-          alt="zoonavigator"
-        />
-        ZooNavigator
-      </Link> */}
       <a
         href={`http://${data.hostIP}:8001/`}
         className={`olive item ${

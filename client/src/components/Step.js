@@ -4,6 +4,8 @@ import SyntaxHighlighter from "react-syntax-highlighter";
 const filebeatLocationCodeStr = "/etc/filebeat/filebeat.yml";
 const filebeatInstallURL =
   "https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-installation-configuration.html#installation";
+const filebeatStartURL =
+  "https://www.elastic.co/guide/en/beats/filebeat/master/filebeat-starting.html";
 
 const Step = ({ number, title, content, color }) => {
   return (
@@ -79,10 +81,6 @@ export const Step2Content = ({ choices }) => {
 export const Step3Content = () => {
   return (
     <>
-      {/* <p>
-        Move your configuration file to <code>/etc/filebeat/filebeat.yml.</code>
-      </p> */}
-
       <SyntaxHighlighter language="yaml">
         {filebeatLocationCodeStr}
       </SyntaxHighlighter>
@@ -97,11 +95,7 @@ export const Step4Content = () => {
       <p>
         <i>
           Check the &nbsp;
-          <a
-            href="https://www.elastic.co/guide/en/beats/filebeat/master/filebeat-starting.html"
-            target="_blank"
-            rel="noreferrer"
-          >
+          <a href={filebeatStartURL} target="_blank" rel="noreferrer">
             Filebeat documentation
           </a>
           &nbsp;for the specific command to start Filebeat based on your

@@ -47,7 +47,7 @@ app.get("/download", (req, res) => {
     );
   }
   const file = `./filebeatConfigs/${module}/filebeat.yml`;
-  res.download(file); // Set disposition and send it.
+  res.download(file);
 });
 
 app.get("/s3", async (req, res) => {

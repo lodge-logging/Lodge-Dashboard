@@ -20,7 +20,6 @@ function App() {
   }, []);
 
   let kibanaLink = `http://${data.kibanaHost}/?auth_provider_hint=anonymous1#/elasticsearch/nodes?_g=(....)`;
-  //let zooNavigatorLink = `http://${data.hostIP}:8001/`;
   let kowlLink = `http://${data.hostIP}:8080/`;
 
   return (
@@ -69,23 +68,6 @@ function App() {
             path="/Lodge-Restore"
             element={<Content children={<S3 />} title="Lodge-Restore" />}
           />
-          {/* <Route
-            path="/zooNavigator"
-            element={
-              <Content
-                children={
-                  <Content
-                    children={
-                      <IFrame srcLink={zooNavigatorLink} title="zooNavigator" />
-                    }
-                    title="zooNavigator"
-                    description="ZooNavigator provides you an effcient way to manage ZooKeeper nodes."
-                    url={zooNavigatorLink}
-                  />
-                }
-              />
-            }
-          /> */}
           <Route
             path="/documentation"
             element={
